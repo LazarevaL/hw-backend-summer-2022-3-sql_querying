@@ -2,10 +2,11 @@
 # Вывести топ 5 коротких по длительности перелетов.  Duration - разница между scheduled_arrival и scheduled_departure.
 # В ответе должно быть 2 колонк [flight_no, duration]
 TASK_1_QUERY = """
-select flight_no, (scheduled_arrival - scheduled_departure) as duration
-from flights 
-order by 2 
-limit 5;"""
+SELECT flight_no, (scheduled_arrival-scheduled_departure) as duration
+# FROM flights
+# where (scheduled_arrival-scheduled_departure) is not null
+# ORDER BY 2
+# LIMIT 5;"""
 # SELECT flight_no, (scheduled_arrival-scheduled_departure) as duration
 # FROM flights
 # where (scheduled_arrival-scheduled_departure) is not null
@@ -50,7 +51,7 @@ with b as
 select timezone 
 from flights inner join airports on flights.arrival_airport=airports.airport_code
 
-select count(*) as count
+select distinct count(*) as count
 from a inner join b on a.timezone = b.timezone
 """
 #  count
