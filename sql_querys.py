@@ -43,16 +43,13 @@ LIMIT 3;"""
 # Вывести число перелетов внутри одной таймзоны
 # Нужно вывести 1 значение в колонке count
 TASK_3_QUERY = """
-with a(timezone, flight_no) as
-(select timezone, flight_no
-from flights inner join airports_data on flights.departure_airport=airports_data.airport_code)
-
-with b(timezone, flight_no) as
-(select timezone, flight_no
-from flights inner join airports_data on flights.arrival_airport=airports_data.airport_code)
-
-select distinct count(flight_no) as count
-from a inner join b on a.timezone = b.timezone
+SELECT count(1)
+FROM flights
+INNER JOIN airports_data as a 
+ON flights.arrival_airport = a.airport_code 
+INNER JOIN airports_data as b 
+ON flights.departure_airport = b.airport_code 
+WHERE a.timezone = b.timezone;
 """
 
 #  count
