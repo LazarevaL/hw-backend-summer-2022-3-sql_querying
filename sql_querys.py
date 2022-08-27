@@ -3,10 +3,10 @@
 # В ответе должно быть 2 колонк [flight_no, duration]
 TASK_1_QUERY = """
 SELECT flight_no, (scheduled_arrival-scheduled_departure) as duration
-# FROM flights
-# where (scheduled_arrival-scheduled_departure) is not null
-# ORDER BY 2
-# LIMIT 5;"""
+FROM flights
+where (scheduled_arrival-scheduled_departure) is not null
+ORDER BY 2
+LIMIT 5;"""
 # SELECT flight_no, (scheduled_arrival-scheduled_departure) as duration
 # FROM flights
 # where (scheduled_arrival-scheduled_departure) is not null
@@ -44,14 +44,14 @@ LIMIT 3;"""
 # Нужно вывести 1 значение в колонке count
 TASK_3_QUERY = """
 with a as
-select timezone 
+select timezone, flight_no
 from flights inner join airports on flights.depature_airport=airports.airport_code
 
 with b as 
-select timezone 
+select timezone, flight_no
 from flights inner join airports on flights.arrival_airport=airports.airport_code
 
-select distinct count(*) as count
+select distinct count(flight_no) as count
 from a inner join b on a.timezone = b.timezone
 """
 #  count
