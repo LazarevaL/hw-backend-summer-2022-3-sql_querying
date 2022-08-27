@@ -44,12 +44,12 @@ LIMIT 3;"""
 # Нужно вывести 1 значение в колонке count
 TASK_3_QUERY = """
 with a as
-select timezone, flight_no
-from flights inner join airports_data on flights.departure_airport=airports_data.airport_code
+(select timezone, flight_no
+from flights inner join airports_data on flights.departure_airport=airports_data.airport_code)
 
 with b as
-select timezone, flight_no
-from flights inner join airports_data on flights.arrival_airport=airports_data.airport_code
+(select timezone, flight_no
+from flights inner join airports_data on flights.arrival_airport=airports_data.airport_code)
 
 select distinct count(flight_no) as count
 from a inner join b on a.timezone = b.timezone
