@@ -47,7 +47,7 @@ SELECT count(1)
 FROM flights
 INNER JOIN airports as a
 ON flights.arrival_airport = a.airport_code 
-INNER JOIN airports_data as b 
+INNER JOIN airports as b 
 ON flights.departure_airport = b.airport_code 
 WHERE a.timezone = b.timezone;
 """
