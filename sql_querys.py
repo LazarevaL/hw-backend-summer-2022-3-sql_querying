@@ -45,7 +45,7 @@ LIMIT 3;"""
 TASK_3_QUERY = """
 with a as
 select timezone, flight_no
-from flights inner join airports on flights.depature_airport=airports.airport_code
+from flights inner join airports on flights.departure_airport=airports.airport_code
 
 with b as 
 select timezone, flight_no
